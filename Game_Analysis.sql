@@ -37,18 +37,13 @@ select winner, COUNT(*) as wins from game_info group by winner order by wins des
 
 select decision, count(*) as toss_count from game_info group by decision;
 
-SELECT (COUNT(CASE WHEN decision = 'bowl' THEN 1 END) / 
-        COUNT(CASE WHEN decision = 'bat' THEN 1 END)) AS ratio_bowl_to_bat
-FROM game_info;
+select (count(case when decision = 'bowl' then 1 end) / count(case when decision = 'bat' then 1 end)) as ratio_bowl_to_bat from game_info;
 
 -- Question 3: What impact did the toss have on the result?
 
 select count(*) from game_info where toss = winner;
 select count(*) from game_info where decision = 'bat' and margin like '%run%';
 select count(*) from game_info where decision = 'bowl' and margin like '%wicket%';
-
-select count(*) from game_info where decision = 'bat' and margin like '%wicket%';
-select count(*) from game_info where decision = 'bowl' and margin like '%run%';
 
 -- Question 4: How many games were won by the chasing team? How many were won by the defending team? What is the ratio of successful chases to defences?
 
