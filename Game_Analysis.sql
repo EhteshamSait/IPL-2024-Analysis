@@ -39,20 +39,20 @@ select decision, count(*) as toss_count from game_info group by decision;
 
 select (count(case when decision = 'bowl' then 1 end) / count(case when decision = 'bat' then 1 end)) as ratio_bowl_to_bat from game_info;
 
--- Question 3: What impact did the toss have on the result?
+-- Question 4: What impact did the toss have on the result?
 
 select count(*) from game_info where toss = winner;
 select count(*) from game_info where decision = 'bat' and margin like '%run%';
 select count(*) from game_info where decision = 'bowl' and margin like '%wicket%';
 
--- Question 4: How many games were won by the chasing team? How many were won by the defending team? What is the ratio of successful chases to defences?
+-- Question 5: How many games were won by the chasing team? How many were won by the defending team? What is the ratio of successful chases to defences?
 
 select count(*) from game_info where margin like '%wicket%';
 select count(*) from game_info where margin like '%run%';
 
 select (count(case when margin like '%wicket%' then 1 end) / count(case when margin like '%run%' then 1 end)) as ratio_chase_to_defend from game_info;
 
--- Question 5: Did the venue play a role in the result?
+-- Question 6: Did the venue play a role in the result?
 
 select distinct venue from game_info;
 
