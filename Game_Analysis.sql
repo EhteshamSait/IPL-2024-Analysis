@@ -31,7 +31,7 @@ select distinct team1 from game_info;
 
 -- Question 2: How many games did each team win?
 
-select winner, COUNT(*) as wins from game_info group by winner order by wins desc;
+select winner, count(*) as wins from game_info group by winner order by wins desc;
 
 -- Question 3: Was there a bias in the toss decision? Print it as a ratio.
 
